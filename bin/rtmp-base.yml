@@ -1,0 +1,39 @@
+#node-media-server.yml
+apiVersion: 2018-10-01
+location: eastus
+name: pizzapulls
+properties:
+  containers:
+  - name: pizzapulls
+    properties:
+      environmentVariables:
+        - name: 'MEDIA_ROOT'
+          value: '/aci/media'
+        - name: 'AUTH_SECRET'
+          secureValue: 'pizzapulls'
+      image: pizzapulls/rtmp:latest
+      ports:
+        - port: 1935
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      # volumeMounts:
+      # - mountPath: /aci/media/
+      #   name: filesharevolume
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    dnsNameLabel: pizzapulls-rtmp #this must be unique in azure region
+    ports:
+    - protocol: tcp
+      port: '1935'
+  # volumes:
+  # - name: filesharevolume
+  #   azureFile:
+  #     sharename: acishare
+  #     storageAccountName: <ACI_PERS_STORAGE_ACCOUNT_NAME>
+  #     storageAccountKey: <STORAGE_KEY>
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

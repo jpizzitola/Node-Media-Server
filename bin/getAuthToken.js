@@ -1,5 +1,5 @@
 const md5 = require('crypto').createHash('md5');
-let key = '<yoursecret>';
+let key = 'pizzapulls';
 // timestamp of the expiration time in future
 let exp = (Date.now() / 1000 | 0) + 335445646;
 let streamId = '/live/PizzaPulls';

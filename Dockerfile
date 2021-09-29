@@ -19,6 +19,15 @@ COPY package*.json ./
 
 RUN npm i
 
+RUN apk update && \
+    apk upgrade && \
+    apk add 'ffmpeg>4.0.0'
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+ENV MEDIA_ROOT='./media' FFMPEG_PATH='/usr/bin/ffmpeg'
+
 COPY . .
 
 EXPOSE 1935 8000 8443

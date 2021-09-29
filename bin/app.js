@@ -1,6 +1,8 @@
 #!/usr/bin/env node 
 
 const NodeMediaServer = require('..');
+const MediaRoot = process.env.MEDIA_ROOT || './media'
+
 let argv = require('minimist')(process.argv.slice(2),
   {
     string:['rtmp_port','http_port','https_port'],
@@ -40,7 +42,7 @@ const config = {
   },
   http: {
     port: argv.http_port,
-    mediaroot: __dirname+'/media',
+    mediaroot: MediaRoot,
     webroot: __dirname+'/www',
     allow_origin: '*',
     api: true
@@ -54,9 +56,9 @@ const config = {
     api: true,
     api_user: 'admin',
     api_pass: 'admin',
-    play: false,
-    publish: false,
-    secret: 'nodemedia2017privatekey'
+    play: true,
+    publish: true,
+    secret: process.env.AUTH_SECRET
   }
 };
 

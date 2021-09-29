@@ -51,15 +51,15 @@ const config = {
     port: argv.https_port,
     key: __dirname+'/privatekey.pem',
     cert: __dirname+'/certificate.pem',
-  },
-  auth: {
-    api: true,
-    api_user: 'admin',
-    api_pass: 'admin',
-    play: true,
-    publish: true,
-    secret: process.env.AUTH_SECRET
   }
+  // auth: {
+  //   api: true,
+  //   api_user: 'admin',
+  //   api_pass: 'admin',
+  //   play: true,
+  //   publish: true,
+  //   secret: "pizzapulls"
+  // }
 };
 
 

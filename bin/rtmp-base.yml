@@ -1,17 +1,17 @@
 #node-media-server.yml
 apiVersion: 2018-10-01
 location: eastus
-name: pizzapulls
+name: pizza-pulls-main2
 properties:
   containers:
-  - name: pizzapulls
+  - name: pizza-pulls-main2
     properties:
       environmentVariables:
         - name: 'MEDIA_ROOT'
           value: '/aci/media'
         - name: 'AUTH_SECRET'
           secureValue: 'pizzapulls'
-      image: pizzapulls/rtmp:latest
+      image: pizzapulls/rtmp
       ports:
         - port: 1935
       resources:
